@@ -1,8 +1,6 @@
-/**
- * 
- */
 package com.example.springredisexample;
 
+import com.example.springredisexample.entity.User;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
@@ -11,10 +9,8 @@ import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 
-import com.example.springredisexample.entity.User;
-
 /**
- * @author mahes
+ * @author mahesh
  *
  */
 @Configuration
@@ -22,18 +18,19 @@ import com.example.springredisexample.entity.User;
 public class SpringRedisConfig {
 
 	@Bean
-	   RedisTemplate<String, User> redisTemplate(){
-	   RedisTemplate<String,User> redisTemplate = new RedisTemplate<String,User>();
-	   redisTemplate.setConnectionFactory(jedisConnectionFactory());
-	   
-	   return redisTemplate;
-		
-	}
+    private RedisTemplate<String, User> redisTemplate() {
+        RedisTemplate<String, User> redisTemplate;
+        redisTemplate = new RedisTemplate<>();
+        redisTemplate.setConnectionFactory(jedisConnectionFactory());
+
+        return redisTemplate;
+
+    }
 	
 	@Bean
-	  JedisConnectionFactory jedisConnectionFactory() {
-		return new JedisConnectionFactory();
-	}
+    private JedisConnectionFactory jedisConnectionFactory() {
+        return new JedisConnectionFactory();
+    }
 	
 	@Bean	
 	 CacheManager redisCacheManager() {
