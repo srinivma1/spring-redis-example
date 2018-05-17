@@ -13,6 +13,6 @@ accept=127.0.0.1:6830
 connect=xxxxx.redis.cache.windows.net:6380
 
 Open command prompt  Go to Redis Directory and  run below command. We will have to change password based on environment we want to connect
-D:\redis-latest>redis-cli.exe -h 127.0.0.1 -p 6830 -a <password>
+D:\redis-latest>redis-cli.exe -h 127.0.0.1 -p 6830 -a password
 
 You can execute FLUSHALL command to clear all the keys. In case if we are loading specific entity, we can execute redis-cli --raw keys "$PATTERN" | xargs redis-cli del
